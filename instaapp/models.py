@@ -42,4 +42,9 @@ class Post(models.Model):
     likes=models.IntegerField(default=0)
     profile=models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     user_profile = models.ForeignKey(User,on_delete=models.CASCADE, related_name='posts',blank=True)
-    date = models.DateTimeField(auto_now_add=True)                  
+    date = models.DateTimeField(auto_now_add=True) 
+
+    @classmethod
+    def one_image(cls, id):
+        post=Post.objects.filter(id=id)
+        return post                 
