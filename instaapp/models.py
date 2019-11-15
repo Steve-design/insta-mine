@@ -21,4 +21,9 @@ class Profile(models.Model):
     @classmethod
     def get_all_profiles(cls):
         profile = Profile.objects.all()
-        return profile       
+        return profile 
+
+    @classmethod
+    def find_profile(cls, search_term):
+        profile = Profile.objects.filter(user__username__icontains=search_term)
+        return profile          
