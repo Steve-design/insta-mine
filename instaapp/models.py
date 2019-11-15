@@ -34,4 +34,12 @@ class Profile(models.Model):
         return profile    
 
     class Meta:
-        ordering = ['user']              
+        ordering = ['user']    
+
+class Post(models.Model):
+    image = models.ImageField(upload_to='images/', blank=True)
+    caption = HTMLField(blank=True)
+    likes=models.IntegerField(default=0)
+    profile=models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    user_profile = models.ForeignKey(User,on_delete=models.CASCADE, related_name='posts',blank=True)
+    date = models.DateTimeField(auto_now_add=True)                  
