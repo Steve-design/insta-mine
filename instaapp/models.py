@@ -16,4 +16,9 @@ class Profile(models.Model):
     @classmethod
     def get_profile(cls, id):
         profile = Profile.objects.get(user=id)
-        return     
+        return  
+
+    @classmethod
+    def get_all_profiles(cls):
+        profile = Profile.objects.all()
+        return profile       
