@@ -56,4 +56,9 @@ class Post(models.Model):
 
     @classmethod
     def get_user_images(cls, profile_id):
-        images=Post.objects.filter(profile_id=id)                   
+        images=Post.objects.filter(profile_id=id)  
+
+    @classmethod
+    def get_profile_image(cls, profile):
+        posts = Post.objects.filter(user_profile__pk=profile)
+        return posts                     
