@@ -52,4 +52,8 @@ class Post(models.Model):
     @classmethod
     def all_posts(cls):
         posts = cls.objects.all()
-        return posts                  
+        return posts   
+
+    @classmethod
+    def get_user_images(cls, profile_id):
+        images=Post.objects.filter(profile_id=id)                   
