@@ -47,4 +47,9 @@ class Post(models.Model):
     @classmethod
     def one_image(cls, id):
         post=Post.objects.filter(id=id)
-        return post                 
+        return post   
+
+    @classmethod
+    def all_posts(cls):
+        posts = cls.objects.all()
+        return posts                  
