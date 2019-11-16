@@ -98,4 +98,20 @@ def like(request,operation,pk):
     elif operation =='unlike':
         image.likes -= 1
         image.save()
-    return redirect('homepage')             
+    return redirect('homepage')   
+
+@login_required(login_url='/accounts/login/')
+def add_comment(request,pk):
+    image = get_object_or_404(Post, pk=pk)
+    current_user = request.user
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.imagecommented = image
+            comment.poster = current_user
+            comment.save()
+            return redirect('homepage')
+    else:
+        form = CommentForm()
+        return render(request,'comment.html',{"user":current_user,"comment_form":form})              
