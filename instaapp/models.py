@@ -71,4 +71,12 @@ class Post(models.Model):
     @classmethod
     def get_all_profiles(cls):
         profile = Profile.objects.all()
-        return profile                           
+        return profile     
+
+class Comment(models.Model):
+    comment = models.CharField(max_length=30, blank=True)
+    poster = models.ForeignKey(User,on_delete=models.CASCADE, blank=True)
+    imagecommented = models.ForeignKey(Post,on_delete=models.CASCADE, related_name='comments',null=True)
+
+    def save_comment(self):
+        self.save()                              
