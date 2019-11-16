@@ -5,8 +5,8 @@ from .models import *
 class ProfileTest(TestCase):
 
     def setUp(self):
-        self.user = User.objects.create(id = 1, username='cheru')
-        self.profile = Profile.objects.create(user = self.user,bio = 'blow away')
+        self.user = User.objects.create(id = 1, username='Steve')
+        self.profile = Profile.objects.create(user = self.user,bio = 'loves life')
 
     def test_instance(self):
         self.assertTrue(isinstance(self.profile,Profile))
@@ -21,18 +21,18 @@ class ProfileTest(TestCase):
 
     def test_find_profile(self):
         self.profile.save()
-        profile = Profile.find_profile('cheru')
+        profile = Profile.find_profile('Steve')
         self.assertTrue(len(profile) > 0)
 
 class ImageTest(TestCase):
 
     def setUp(self):
-        self.user = User.objects.create(id = 1, username='cheru')
+        self.user = User.objects.create(id = 1, username='Steve')
         self.profile = Profile.objects.create(user = self.user,bio = 'my sample bio')
 
         self.image = Post.objects.create(user_profile = self.user,
                                           profile = self.profile,
-                                          caption ='this is it!',
+                                          caption ='It was a great ride',
                                           likes = 0)
 
     def test_instance(self):
@@ -45,9 +45,9 @@ class ImageTest(TestCase):
 
 class CommentTest(TestCase):
     def setUp(self):
-        self.user = User.objects.create(id = 1, username='cheru')
+        self.user = User.objects.create(id = 1, username='Steve')
 
-        self.comment= Comment.objects.create(poster= self.user, comment='new comment' )
+        self.comment= Comment.objects.create(poster= self.user, comment='basic life' )
 
     def test_instance(self):
         self.assertTrue(isinstance(self.comment, Comment))
