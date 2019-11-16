@@ -66,4 +66,9 @@ class Post(models.Model):
     @classmethod
     def get_post_by_id(cls,id):
         post = Post.objects.filter(id = Post.id)
-        return post                        
+        return post 
+
+    @classmethod
+    def get_all_profiles(cls):
+        profile = Profile.objects.all()
+        return profile                           
