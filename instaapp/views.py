@@ -5,7 +5,6 @@ from .models import *
 from .forms import *
 import datetime as dt
 from django.http import HttpResponse,Http404,HttpResponseRedirect
-from django.shortcuts import render,redirect
 from .models import *
 from .forms import *
 from .email import *
