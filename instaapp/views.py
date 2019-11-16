@@ -35,3 +35,18 @@ def homepage(request):
         "comments":comments,
     }
     return render(request, 'images/homepage.html', context)
+
+@login_required(login_url='/accounts/login/')
+def upload_image(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = UploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user_profile = current_user
+            post.save()
+        return redirect('homepage')
+
+    else:
+        form = UploadForm()
+    return render(request, 'images/upload.html', {"form": form})
