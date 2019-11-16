@@ -17,3 +17,21 @@ def homepage(request):
     profile = Profile.get_all_profiles()
     comments=Comment.objects.all()
     current_user = request.user
+     if request.method == 'POST':
+        form = CommentForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = current_user
+            comment.save()
+        return redirect('homepage')
+
+    else:
+        form=CommentForm
+    context =  {
+        "profile": profile,
+        "form": form,
+        "posts":posts ,
+        "comments":comments,
+    }
+    return render(request, 'images/homepage.html', context)
