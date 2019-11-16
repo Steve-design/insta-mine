@@ -93,3 +93,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment                                 
+class Likes(models.Model):
+	post = models.IntegerField()
+	liker = models.CharField(max_length=20)        
