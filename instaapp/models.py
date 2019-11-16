@@ -79,4 +79,17 @@ class Comment(models.Model):
     imagecommented = models.ForeignKey(Post,on_delete=models.CASCADE, related_name='comments',null=True)
 
     def save_comment(self):
-        self.save()                              
+        self.save() 
+
+    @classmethod
+    def get_comments(cls, id):
+        comments = Comment.objects.filter(post_id=id).all()
+        return comments
+
+    @classmethod
+    def get_all_comments(cls):
+        comments = Comment.objects.all()
+        return comments
+
+    def __str__(self):
+        return self.comment                                 
