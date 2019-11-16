@@ -16,7 +16,7 @@ def homepage(request):
     profile = Profile.get_all_profiles()
     comments=Comment.objects.all()
     current_user = request.user
-     if request.method == 'POST':
+    if request.method == 'POST':
         form = CommentForm(request.POST, request.FILES)
 
         if form.is_valid():
