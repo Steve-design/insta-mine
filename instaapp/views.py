@@ -88,4 +88,14 @@ def search_results(request):
                                              "username":profiles})
     else:
         message = "You haven't searched for any user"
-        return render(request,'images/search_profile.html',{"message":message})      
+        return render(request,'images/search_profile.html',{"message":message}) 
+
+def like(request,operation,pk):
+    image = get_object_or_404(Post,pk=pk)
+    if operation == 'like':
+        image.likes += 1
+        image.save()
+    elif operation =='unlike':
+        image.likes -= 1
+        image.save()
+    return redirect('homepage')             
