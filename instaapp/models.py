@@ -95,4 +95,8 @@ class Comment(models.Model):
         return self.comment                                 
 class Likes(models.Model):
 	post = models.IntegerField()
-	liker = models.CharField(max_length=20)        
+	liker = models.CharField(max_length=20)  
+
+class Follow(models.Model):
+    users = models.ManyToManyField(User, related_name='follow')
+    current_user = models.ForeignKey(User, related_name='c_user', null=True)          
