@@ -23,5 +23,5 @@ urlpatterns = [
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^logout/$',views.logout, {"next_page": '/'}),
     url(r'^admin/', admin.site.urls),
-    url(r'',include('pixel_app.urls'))
+    url(r'',include('instaapp.urls'))
 ]
