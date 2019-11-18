@@ -4,9 +4,6 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 from .forms import *
 import datetime as dt
-from django.http import HttpResponse,Http404,HttpResponseRedirect
-from .models import *
-from .forms import *
 from .email import *
 
 # Create your views here.
